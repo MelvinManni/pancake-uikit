@@ -23,7 +23,7 @@ export const Default: React.FC = () => {
   return (
     <div style={{ padding: "32px", width: "500px" }}>
       <Row>
-        <Card>
+        <Card noShadow >
           <CardBody>Body</CardBody>
           <CardFooter>Footer</CardFooter>
         </Card>

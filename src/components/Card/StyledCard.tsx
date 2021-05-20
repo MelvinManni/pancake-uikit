@@ -4,12 +4,14 @@ import { CardProps } from "./types";
 
 interface StyledCardProps extends CardProps {
   theme: DefaultTheme;
+  noShadow?: boolean;
+  darkBg?: boolean;
 }
 
 /**
  * Priority: Warning --> Success --> Active
  */
-const getBoxShadow = ({ isActive, isSuccess, isWarning, theme }: StyledCardProps) => {
+const getBoxShadow = ({ isActive, isSuccess, isWarning,noShadow, theme }: StyledCardProps) => {
   if (isWarning) {
     return theme.card.boxShadowWarning;
   }
@@ -22,18 +24,21 @@ const getBoxShadow = ({ isActive, isSuccess, isWarning, theme }: StyledCardProps
     return theme.card.boxShadowActive;
   }
 
+  if (noShadow) {
+    return theme.card.noShadow;
+  }
+
   return theme.card.boxShadow;
 };
 
 const StyledCard = styled.div<StyledCardProps>`
-  background-color: ${({ theme }) => theme.card.background};
+  background-color: ${({ darkBg, theme }) => darkBg ? theme.card.darkBackground : theme.card.background};
   border: ${({ theme }) => theme.card.boxShadow};
   border-radius: 32px;
-  box-shadow: ${getBoxShadow};
-  color: ${({ theme, isDisabled }) => theme.colors[isDisabled ? "textDisabled" : "text"]};
+  box-shadow:${getBoxShadow};
+  color: ${({ theme,darkBg, isDisabled }) => darkBg ? theme.colors.background : theme.colors[isDisabled ? "textDisabled" : "text"]};
   overflow: hidden;
   position: relative;
-
   ${space}
 `;
 

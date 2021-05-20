@@ -1,9 +1,11 @@
-import { darkColors, lightColors } from "../../theme/colors";
+import { lightColors, darkColors } from "../../theme/colors";
 import { shadows } from "../../theme/base";
 import { CardTheme } from "./types";
 
 export const light: CardTheme = {
-  background: lightColors.backgroundAlt,
+  background: lightColors.background,
+  darkBackground: lightColors.secondary,
+  noShadow: shadows.level0,
   boxShadow: shadows.level1,
   boxShadowActive: shadows.active,
   boxShadowSuccess: shadows.success,
@@ -17,7 +19,9 @@ export const light: CardTheme = {
 };
 
 export const dark: CardTheme = {
-  background: darkColors.backgroundAlt,
+  background: darkColors.background,
+  darkBackground: lightColors.secondary,
+  noShadow: shadows.level0,
   boxShadow: shadows.level1,
   boxShadowActive: shadows.active,
   boxShadowSuccess: shadows.success,

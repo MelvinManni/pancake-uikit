@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/ui-tools",
-  "version": "0.32.5",
+  "name": "pancakeswap-toolkit",
+  "version": "1.0.3",
   "description": "Set of UI components for pancake projects",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -8,7 +8,7 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/pancake-uikit",
+  "repository": "https://github.com/MelvinManni/pancake-uikit",
   "license": "MIT",
   "scripts": {
     "start": "yarn storybook",
@@ -82,6 +82,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "gitHead": "02a91d33c520d33567199664dc9c069d70b810bc"
+  }
 }

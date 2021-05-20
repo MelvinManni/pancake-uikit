@@ -23,19 +23,19 @@ const getBoxShadow = ({ isSuccess = false, isWarning = false, theme }: StyledInp
 const getHeight = ({ scale = scales.MD }: StyledInputProps) => {
   switch (scale) {
     case scales.SM:
-      return "32px";
+      return "35px";
     case scales.LG:
-      return "48px";
+      return "51px";
     case scales.MD:
     default:
-      return "40px";
+      return "43px";
   }
 };
 
 const Input = styled.input<InputProps>`
   background-color: ${({ theme }) => theme.colors.input};
   border: 0;
-  border-radius: 16px;
+  border-radius: 10px;
   box-shadow: ${getBoxShadow};
   color: ${({ theme }) => theme.colors.text};
   display: block;
