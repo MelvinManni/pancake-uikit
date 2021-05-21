@@ -23,12 +23,14 @@ const scaleKeyValues = {
   },
 };
 
-const getScale = (property: ScaleKeys) => ({ scale = scales.MD }: ToggleProps) => {
-  return scaleKeyValues[scale][property];
-};
+const getScale =
+  (property: ScaleKeys) =>
+  ({ scale = scales.MD }: ToggleProps) => {
+    return scaleKeyValues[scale][property];
+  };
 
 export const Handle = styled.div<HandleProps>`
-  background-color: ${({ theme }) => theme.toggle.handleBackground};
+  background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 50%;
   cursor: pointer;
   height: ${getScale("handleHeight")};
@@ -47,23 +49,20 @@ export const Input = styled.input<InputProps>`
   position: absolute;
   width: 100%;
   z-index: 3;
-
   &:checked + ${Handle} {
     left: ${getScale("checkedLeft")};
   }
-
-  &:focus + ${Handle} {
-    box-shadow: ${({ theme }) => theme.shadows.focus};
+  + ${Handle} {
+    box-shadow: ${({ theme }) => theme.shadows.secondary};
   }
-
+/* 
   &:hover + ${Handle}:not(:disabled):not(:checked) {
-    box-shadow: ${({ theme }) => theme.shadows.focus};
-  }
+  } */ */
 `;
 
 const StyledToggle = styled.div<ToggleProps>`
   align-items: center;
-  background-color: ${({ theme, checked }) => theme.colors[checked ? "success" : "input"]};
+  background-color: ${({ theme, checked }) => theme.colors[checked ? "primary" : "input"]};
   border-radius: 24px;
   box-shadow: ${({ theme }) => theme.shadows.inset};
   cursor: pointer;
