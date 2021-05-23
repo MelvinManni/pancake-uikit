@@ -1,11 +1,19 @@
 import React from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "../Svg";
+import { ChevronDownIcon, ChevronUpIcon, PlusIcon, MinusIcon } from "../Svg";
 import Button from "./Button";
 import IconButton from "./IconButton";
 
 interface Props {
   onClick?: () => void;
   expanded?: boolean;
+}
+
+interface LabelProps {
+  onClick?: () => void;
+  expanded?: boolean;
+  width?: string;
+  swapIcon?: boolean;
+  flex?: boolean;
 }
 
 export const ExpandableButton: React.FC<Props> = ({ onClick, expanded, children }) => {
@@ -20,14 +28,25 @@ ExpandableButton.defaultProps = {
   expanded: false,
 };
 
-export const ExpandableLabel: React.FC<Props> = ({ onClick, expanded, children, ...rest }) => {
+export const ExpandableLabel: React.FC<LabelProps> = ({ onClick, expanded, width, flex, swapIcon, children, ...rest }) => {
+  const handleExpandIcon = () => (swapIcon === true ? <PlusIcon color="primary" /> : <ChevronUpIcon color="primary" />);
+  const handleCloseIcon = () => (swapIcon === true ? <MinusIcon color="primary" /> : <ChevronDownIcon color="primary" />);
   return (
-    <Button 
+    <Button
       {...rest}
       variant="text"
       aria-label="Hide or show expandable content"
       onClick={onClick}
-      endIcon={expanded ? <ChevronUpIcon color="primary" /> : <ChevronDownIcon color="primary" />}
+      width={"100%"}
+      style={
+        flex === true
+          ? {
+              display: "flex",
+              justifyContent: "space-between",
+            }
+          : {}
+      }
+      endIcon={expanded ? handleExpandIcon() : handleCloseIcon()}
     >
       {children}
     </Button>
