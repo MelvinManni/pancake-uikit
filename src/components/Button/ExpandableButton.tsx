@@ -37,7 +37,7 @@ export const ExpandableLabel: React.FC<LabelProps> = ({ onClick, expanded, width
       variant="text"
       aria-label="Hide or show expandable content"
       onClick={onClick}
-      width={"100%"}
+      width={width}
       style={
         flex === true
           ? {
