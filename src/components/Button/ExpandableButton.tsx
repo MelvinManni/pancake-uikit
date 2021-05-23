@@ -20,9 +20,10 @@ ExpandableButton.defaultProps = {
   expanded: false,
 };
 
-export const ExpandableLabel: React.FC<Props> = ({ onClick, expanded, children }) => {
+export const ExpandableLabel: React.FC<Props> = ({ onClick, expanded, children, ...rest }) => {
   return (
-    <Button
+    <Button 
+      {...rest}
       variant="text"
       aria-label="Hide or show expandable content"
       onClick={onClick}
