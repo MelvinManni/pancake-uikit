@@ -29,8 +29,8 @@ ExpandableButton.defaultProps = {
 };
 
 export const ExpandableLabel: React.FC<LabelProps> = ({ onClick, expanded, width, flex, swapIcon, children, ...rest }) => {
-  const handleExpandIcon = () => (swapIcon === true ? <PlusIcon color="primary" /> : <ChevronUpIcon color="primary" />);
-  const handleCloseIcon = () => (swapIcon === true ? <MinusIcon color="primary" /> : <ChevronDownIcon color="primary" />);
+  const handleExpandIcon = () => (swapIcon === true ? <MinusIcon fontSize="22px" color="primary" /> : <ChevronUpIcon fontSize="22px" color="primary" />);
+  const handleCloseIcon = () => (swapIcon === true ? <PlusIcon fontSize="22px" color="primary" /> : <ChevronDownIcon fontSize="22px" color="primary" />);
   return (
     <Button
       {...rest}
