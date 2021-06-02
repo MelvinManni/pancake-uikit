@@ -62,20 +62,7 @@ const MobileOnlyOverlay = styled(Overlay)`
   }
 `;
 
-const Menu: React.FC<NavProps> = ({
-  account,
-  login,
-  logout,
-  isDark,
-  toggleTheme,
-  langs,
-  setLang,
-  currentLang,
-  cakePriceUsd,
-  links,
-  profile,
-  children,
-}) => {
+const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme, langs, setLang, currentLang, cakePriceUsd, links, profile, children }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);
@@ -117,12 +104,7 @@ const Menu: React.FC<NavProps> = ({
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
-        <Logo
-          isPushed={isPushed}
-          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-          isDark={isDark}
-          href={homeLink?.href ?? "/"}
-        />
+        <Logo isPushed={isPushed} togglePush={() => setIsPushed((prevState: boolean) => !prevState)} isDark={isDark} href={homeLink?.href ?? "/"} />
         <Flex>
           <CakePrice cakePriceUsd={cakePriceUsd} /> {profile && <Avatar profile={profile} />}
         </Flex>
