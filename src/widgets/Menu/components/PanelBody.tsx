@@ -27,10 +27,10 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const UserWrapper = styled.div`
-  margin:0 16px;
-  margin-top: 70px;
-`
+// const UserWrapper = styled.div`
+//   margin:0 16px;
+//   margin-top: 70px;
+// `
 
 const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, account,
   login,
@@ -93,9 +93,6 @@ const PanelBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, accoun
           </MenuEntry>
         );
       })}
-      <UserWrapper>
-        <UserBlock account={account} login={login} logout={logout} />
-      </UserWrapper>
     </Container>
   );
 };

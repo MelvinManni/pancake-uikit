@@ -6,9 +6,9 @@ import Flex from "../../components/Box/Flex";
 import { useMatchBreakpoints } from "../../hooks";
 import Logo from "./components/Logo";
 import Panel from "./components/Panel";
-// import UserBlock from "./components/UserBlock";
+import UserBlock from "./components/UserBlock";
 import { NavProps } from "./types";
-import Avatar from "./components/Avatar";
+// import Avatar from "./components/Avatar";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import CakePrice from "./components/CakePrice";
 
@@ -106,7 +106,8 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme,
       <StyledNav showMenu={showMenu}>
         <Logo isPushed={isPushed} togglePush={() => setIsPushed((prevState: boolean) => !prevState)} isDark={isDark} href={homeLink?.href ?? "/"} />
         <Flex>
-          <CakePrice cakePriceUsd={cakePriceUsd} /> {profile && <Avatar profile={profile} />}
+          <CakePrice cakePriceUsd={cakePriceUsd} /> <UserBlock account={account} login={login} logout={logout} />  
+          {/* {profile && <Avatar profile={profile} />} */ }
         </Flex>
       </StyledNav>
       <BodyWrapper>
