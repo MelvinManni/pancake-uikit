@@ -9,7 +9,11 @@ import Panel from "./components/Panel";
 import UserBlock from "./components/UserBlock";
 import { NavProps } from "./types";
 // import Avatar from "./components/Avatar";
-import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+import {
+  MENU_HEIGHT,
+  SIDEBAR_WIDTH_REDUCED,
+  SIDEBAR_WIDTH_FULL,
+} from "./config";
 import CakePrice from "./components/CakePrice";
 
 const Wrapper = styled.div`
@@ -48,8 +52,12 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   max-width: 100%;
 
   ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
-    max-width: ${({ isPushed }) => `calc(100% - ${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px)`};
+    margin-left: ${({ isPushed }) =>
+      `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    max-width: ${({ isPushed }) =>
+      `calc(100% - ${
+        isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED
+      }px)`};
   }
 `;
 
@@ -62,7 +70,24 @@ const MobileOnlyOverlay = styled(Overlay)`
   }
 `;
 
-const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme, langs, setLang, currentLang, cakePriceUsd, links, profile, children }) => {
+const ConnectWrapper = styled.div`
+  margin-left: 15px;
+`;
+
+const Menu: React.FC<NavProps> = ({
+  account,
+  login,
+  logout,
+  isDark,
+  toggleTheme,
+  langs,
+  setLang,
+  currentLang,
+  cakePriceUsd,
+  links,
+  profile,
+  children,
+}) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);
@@ -72,7 +97,9 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme,
   useEffect(() => {
     const handleScroll = () => {
       const currentOffset = window.pageYOffset;
-      const isBottomOfPage = window.document.body.clientHeight === currentOffset + window.innerHeight;
+      const isBottomOfPage =
+        window.document.body.clientHeight ===
+        currentOffset + window.innerHeight;
       const isTopOfPage = currentOffset === 0;
       // Always show the menu when user reach the top
       if (isTopOfPage) {
@@ -104,10 +131,18 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme,
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
-        <Logo isPushed={isPushed} togglePush={() => setIsPushed((prevState: boolean) => !prevState)} isDark={isDark} href={homeLink?.href ?? "/"} />
+        <Logo
+          isPushed={isPushed}
+          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
+          isDark={isDark}
+          href={homeLink?.href ?? "/"}
+        />
         <Flex>
-          <CakePrice cakePriceUsd={cakePriceUsd} /> <UserBlock account={account} login={login} logout={logout} />  
-          {/* {profile && <Avatar profile={profile} />} */ }
+          <CakePrice cakePriceUsd={cakePriceUsd} />{" "}
+          <ConnectWrapper>
+            <UserBlock account={account} login={login} logout={logout} />
+          </ConnectWrapper>
+          {/* {profile && <Avatar profile={profile} />} */}
         </Flex>
       </StyledNav>
       <BodyWrapper>
@@ -129,7 +164,11 @@ const Menu: React.FC<NavProps> = ({ account, login, logout, isDark, toggleTheme,
         <Inner isPushed={isPushed} showMenu={showMenu}>
           {children}
         </Inner>
-        <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
+        <MobileOnlyOverlay
+          show={isPushed}
+          onClick={() => setIsPushed(false)}
+          role="presentation"
+        />
       </BodyWrapper>
     </Wrapper>
   );
